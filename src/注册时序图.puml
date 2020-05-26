@@ -1,0 +1,26 @@
+@startuml
+title 基于GitHub的实验管理平台--注册用例的顺序图
+activate 用户
+用户 -> 注册界面:1.进入对应的注册界面
+activate 注册界面
+注册界面 -> 用户:2.显示注册信息
+用户 -> 注册界面:3.输入注册信息（用户名、密码、身份、信息）
+
+注册界面 -> 注册管理:4.传递注册信息
+activate 注册管理
+database 服务器
+database 数据库存储
+注册管理 -> 服务器:5.传递注册信息
+activate 服务器
+服务器 -> 数据库存储:6.添加注册信息
+activate 数据库存储
+数据库存储 -> 数据库存储:7.验证注册信息
+数据库存储 -> 注册界面:8.返回注册结果
+deactivate 数据库存储
+deactivate 服务器
+deactivate 注册管理
+
+注册界面 -> 用户:9.显示注册结果
+deactivate 注册界面
+deactivate 用户
+@enduml
